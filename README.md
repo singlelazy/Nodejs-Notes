@@ -6,3 +6,4 @@
 * 12-13  模板引擎以及jade语法
 * 14     ejs语法
 * 15-16  express整和以及consolidate and router
+* 17-18  MySQL的安装以及一些基础知识
