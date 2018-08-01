@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		window.onload=function(){
+			var oUser=document.getElementById("user");
+			var oPass=document.getElementById("pass");
+			var oBtn=document.getElementById("btn");
+			
+			oBtn.onclick=function(){
+				var xhr=new XMLHttpRequest()
+				// xhr.open("http://localhost:8080/login?user="+oUser.value+"&&pass="+oPass.value,"get",true)
+				xhr.open("get",`/login?user=${oUser.value}&&pass=${oPass.value}`,true)
+				xhr.send()
+				xhr.onreadystatechange=function(){
+					if ( xhr.readyState == 4 ) {
+						if ( xhr.status == 200 ) {
+							alert(xhr.responseText);
+						} else {
+							alert('出错了,Err：' + xhr.status);
+						}
+					}
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<!-- 表单提交 -->
+	<!-- form action="http://localhost:8080/login" method="get">
+		用户名: <input type="text" name="user" >
+		密码 ： <input type="pass" name="pass" >
+		<input type="submit" value="提交">
+	</form>	 -->	
+	用户名: <input type="text" id="user" >
+	密码 ： <input type="pass" id="pass" >
+	<input type="button" id="btn" value="提交">
+
+</body>
+</html>
