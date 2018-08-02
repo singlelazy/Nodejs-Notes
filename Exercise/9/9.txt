@@ -1,0 +1,34 @@
+﻿express
+1.安装
+npm install express
+2.配置
+  创建服务
+  var server=express();
+  监听
+  server.listen();
+  处理请求
+  server.use("地址",function(req,res){
+  })
+3.接收请求
+4.响应
+
+---------------------------------------------------------
+
+非侵入式（保留了原生的功能，添加了一些功能，增强原有的功能）
+req
+res
+
+---------------------------------------------------------
+3种接收用户请求的方法:
+.get('/',function((req,res){});
+.post('/',function((req,res){});
+.use('/',function((req,res){});既能接收Get也能接收Post
+
+
+---------------------------------------------------------
+中间件(插件)
+express-static  用于处理文件静态读取
+配置
+var static=require('express-static')
+server.use(static("./www"))
+

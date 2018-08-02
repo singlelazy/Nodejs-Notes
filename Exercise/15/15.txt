@@ -1,0 +1,54 @@
+﻿express:
+1.主体
+2.cookie、session
+3.数据交互（get,post）
+4.模板引擎（jade,ejs)
+
+body-parser  只能解析post数据,不能解析post文件    
+	server.use(bodyParser.urlencoded({extended:false}))
+
+multer		 能解析文件							 enctype=multipart/form-data
+	var objMulter=multer({dest:'上传目录'})
+	server.use(objMulter.any())
+	server.use('/',function(req,res){
+		console.log(req.files)
+	})
+
+
+------------------------------------------------------------
+fs.rename("原来的名字","新的名字",function(err){
+})
+
+path  获取文件地址
+	const path =require("path")
+	path.parse("地址")
+	 
+	//base   文件名部分
+	//ext	  扩展名
+	//dir    文件路径
+	//name   文件名（不包括扩展） 
+
+-------------------------------------------------------------
+模板引擎适配：
+1.consolidate   
+	const consolidate=require("consolidate")
+	//输出什么东西
+	server.set('view engine','html')
+	//模板文件放在哪
+	server.set('views','模板文件目录')
+	//那种模板引擎
+	server.engine('html', consolidate.引擎名)
+	server.use("/index",function(req,res){
+		res.render("模板文件",数据)
+	})
+-------------------------------------------------------------
+route-路由: 把不同的目录,对应到不同的模块
+配置：
+	创建router
+		var router=expressRouter();
+	把router添加到server
+		server.use('/user',router)
+	router内部
+	router.get("/1.html")
+
+

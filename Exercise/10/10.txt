@@ -1,0 +1,29 @@
+express框架
+GET-  无需中间件
+POST- body-parser
+配置：
+server.use(bodyParser.urlencoded({
+	extended:true,   //扩展模式
+	limit: 2*1024*1024  //限制模式  限制post数据最大值 2M
+}))
+req.body
+
+-----------------------------------------------------------------
+链式操作
+
+server.use(req,res,next){
+	next()——下一个步骤
+}
+
+-----------------------------------------------------------------
+写中间件
+server.use(function(req,res,next){
+	var str="";
+	req.on("data",function(data){
+		str+=str;
+	})
+	req.on("end",function(){
+		req.body=queryString.parse(str);
+		next();
+	})
+})
