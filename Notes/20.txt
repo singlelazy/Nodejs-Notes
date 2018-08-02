@@ -1,2 +1,0 @@
-﻿creatPool 可以保证多个用户同时连接
-res.status()
