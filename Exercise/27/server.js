@@ -14,6 +14,7 @@ server.listen(8080);
 
 //1.获取请求数据
 //get自带
+server.use(bodyParser.urlencoded({extended:false}))
 server.use(multerObj.any());
 
 //2.cookie、session
@@ -36,8 +37,8 @@ server.set('views', 'template');
 server.set('view engine', 'html');
 
 //4.route
-server.use('/article/', require('./route/1.js')());
-server.use('/blog/', require('./route/2.js')());
+server.use('/web', require('./route/web.js')());
+server.use('/admin', require('./route/admin.js')());
 
 
 //5.default：static
