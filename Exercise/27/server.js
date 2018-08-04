@@ -12,12 +12,12 @@ const expressRoute=require('express-route');
 var server=express();
 server.listen(8080);
 
+
 //1.获取请求数据
 //get自带
 server.use(bodyParser.urlencoded({extended:false}))
 server.use(multerObj.any());
 
-//2.cookie、session
 server.use(cookieParser());
 (function (){
   var keys=[];
