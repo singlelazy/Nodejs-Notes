@@ -1,12 +1,5 @@
-const express=require('express')
-const multer=require('multer')
-const multerObj=multer({dest: './static/upload'});
-var server=express();
-server.listen(8888)
+const pathLib=require('path');
 
-server.use(multerObj.any())
+var obj=pathLib.parse('/root/aaa/bbb/1.txt');
 
-server.use('/',(req,res)=>{
-	console.log(req.file)
-	res.send('ok').end()
-})
+console.log(obj);
